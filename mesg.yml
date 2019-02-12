@@ -1,0 +1,33 @@
+name: Google Sheets
+description: Interact with Google Sheets API
+sid: google-sheets
+tasks:
+  get:
+    inputs:
+      serviceAccountCredentials:
+        type: String
+        description: Service account credentials to access to Google Sheets API
+      spreadsheetID:
+        type: String
+        description: ID of the spreadsheet
+      range:
+        type: String
+        description: Specify range to access to a spesific sheet page, rows and columns
+    outputs:
+      success:
+        data:
+          rows:
+            type: Object
+            repeated: true
+            description: Rows returned for the query
+            object:
+              row:
+                type: Any
+                repeated: true
+                description: Row as an array where each item is next column's value
+      error:
+        data:
+          message:
+            type: String
+            description: Error message
+
